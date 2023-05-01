@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
+import styles from "../styles/index.module.css";
+
 
 const MapNoSSR = dynamic(() => import('../components/Map'), {
   ssr: false,
@@ -16,7 +18,7 @@ export default function Home() {
       url: 'https://vanitysoft-boundaries-io-v1.p.rapidapi.com/rest/v1/public/boundary/zipcode',
       params: { zipcode },
       headers: {
-        'X-RapidAPI-Key': 'f5ddd8b91emsh0b7e1efced72dbbp1530edjsn05202bcc5acc',
+        'X-RapidAPI-Key': "437102b9edmshc0916b70234996bp188f69jsn02967bcee422",
         'X-RapidAPI-Host': 'vanitysoft-boundaries-io-v1.p.rapidapi.com',
       },
     };
@@ -35,17 +37,18 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Zipcode Visualizer</h1>
-      <form onSubmit={handleSubmit}>
-        <input
+    <div className={styles.container}>
+      <h1 className={styles.h1} >Zipcode <span style={{ fontFamily: 'Segoe UI Symbol, sans-serif', fontSize: '27px', color: "rgb(0, 119, 255)"}}>Polygon</span> Visualizer</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <input className={styles.input}
           type="text"
           placeholder="Enter Zipcode"
           value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className={styles.button} type="submit">Search</button>
       </form>
+      <p className={styles.p} >Clock on the <span style={{color: "rgb(0, 119, 255)"}}>Zip Area</span> for Details</p>
       {data && <MapNoSSR data={data} />}
     </div>
   );
