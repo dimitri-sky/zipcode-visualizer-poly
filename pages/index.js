@@ -18,7 +18,7 @@ export default function Home() {
       url: 'https://vanitysoft-boundaries-io-v1.p.rapidapi.com/rest/v1/public/boundary/zipcode',
       params: { zipcode },
       headers: {
-        'X-RapidAPI-Key': process.env.API_KEY,
+        'X-RapidAPI-Key': process.env.NEXT_PUBLIC_API_KEY,
         'X-RapidAPI-Host': 'vanitysoft-boundaries-io-v1.p.rapidapi.com',
       },
     };
