@@ -5,6 +5,7 @@ The project is created with Next.js, the same tech that TikTok's website is made
 Run commands: (assuming you have node.js installed)
 
 npm i
+
 npm run dev
 
 -------------------------
