@@ -1,5 +1,7 @@
 The project is created with Next.js, the same tech that TikTok's website is made.
 
+API Key's are hidden with .env.local or Vercel.
+
 -------------------------
 
 Run commands: (assuming you have node.js installed)
@@ -7,6 +9,8 @@ Run commands: (assuming you have node.js installed)
 npm i
 
 npm run dev
+
+Open http://localhost:3000 with your browser to see the result.
 
 -------------------------
 
