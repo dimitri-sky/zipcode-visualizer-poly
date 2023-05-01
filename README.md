@@ -1,3 +1,23 @@
+The project is created with Next.js, the same tech that TikTok's website is made.
+
+-------------------------
+
+Run commands: (assuming you have node.js installed)
+
+npm i
+
+npm run dev
+
+-------------------------
+
+Live Deployed Website: https://zipcode-visualizer-poly.vercel.app/
+
+GitHub: https://github.com/dimitri-sky/zipcode-visualizer-poly
+
+Presentation: https://www.canva.com/design/DAFhpFSGifo/VIyP7fBTJ0Q45RAiTZw6Pw/watch?utm_content=DAFhpFSGifo&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+
+-------------------------
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
