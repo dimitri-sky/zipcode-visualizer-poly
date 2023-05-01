@@ -48,7 +48,7 @@ export default function Home() {
         />
         <button className={styles.button} type="submit">Search</button>
       </form>
-      <p className={styles.p} >Clock on the <span style={{color: "rgb(0, 119, 255)"}}>Zip Area</span> for Details</p>
+      <p className={styles.p} >Click on the <span style={{color: "rgb(0, 119, 255)"}}>Zip Area</span> for Details</p>
       {data && <MapNoSSR data={data} />}
     </div>
   );
