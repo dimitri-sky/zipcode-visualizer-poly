@@ -39,11 +39,11 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1} >Zipcode <span style={{ fontFamily: 'Segoe UI Symbol, sans-serif', fontSize: '27px', color: "rgb(0, 119, 255)"}}>Polygon</span> Visualizer</h1>
+      <h1 className={styles.h1} >Zip Code <span style={{ fontFamily: 'Segoe UI Symbol, sans-serif', fontSize: '27px', color: "rgb(0, 119, 255)"}}>Polygon</span> Visualizer</h1>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input className={styles.input}
           type="text"
-          placeholder="Enter Zipcode"
+          placeholder="Enter Zip Code"
           value={zipcode}
           onChange={(e) => setZipcode(e.target.value)}
         />
