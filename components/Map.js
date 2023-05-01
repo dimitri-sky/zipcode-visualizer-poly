@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import React, { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, GeoJSON, useMap, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -12,37 +12,42 @@ L.Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-export default function Map({ data }) {
-  const mapRef = useRef(null);
+function ChangeMapView({ data }) {
+  const map = useMap();
 
   useEffect(() => {
-    if (data && mapRef.current) {
-      const mapInstance = mapRef.current.leafletElement;
+    if (data) {
       const geojsonData = L.geoJSON(data);
       const bounds = geojsonData.getBounds();
-      mapInstance.fitBounds(bounds, { padding: [50, 50] });
+      map.fitBounds(bounds, { padding: [50, 50], animate: true, duration: 1 });
     }
+  }, [data, map]);
+
+  return null;
+}
+
+function onEachFeature(feature, layer) {
+  if (feature.properties) {
+    const { zipCode, city, state, county } = feature.properties;
+    layer.bindPopup(`<b>Zipcode:</b> ${zipCode}<br><b>City:</b> ${city}<br><b>State:</b> ${state}<br><b>County:</b> ${county}`);
+  }
+}
+
+export default function Map({ data }) {
+  const [mapData, setMapData] = useState(null);
+
+  useEffect(() => {
+    setMapData(data);
   }, [data]);
 
-  const onEachFeature = (feature, layer) => {
-    const popupContent = `
-      <div>
-        <h3>Zipcode: ${feature.properties.zipCode}</h3>
-        <p>City: ${feature.properties.city}</p>
-        <p>County: ${feature.properties.county}</p>
-        <p>State: ${feature.properties.state}</p>
-      </div>
-    `;
-    layer.bindPopup(popupContent);
-  };
-
   return (
-    <MapContainer center={[39.5, -98.35]} zoom={4} style={{ height: '50vh', width: '100%' }} ref={mapRef}>
+    <MapContainer center={[39.5, -98.35]} zoom={4} style={{ height: '50vh', width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      {data && <GeoJSON key={data.properties.zipCode} data={data} onEachFeature={onEachFeature} />}
+      {mapData && <GeoJSON key={mapData.properties.zipCode} data={mapData} onEachFeature={onEachFeature} />}
+      <ChangeMapView data={mapData} />
     </MapContainer>
   );
 }
