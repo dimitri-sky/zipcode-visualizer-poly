@@ -11,6 +11,7 @@ const MapNoSSR = dynamic(() => import('../components/Map'), {
 export default function Home() {
   const [zipcode, setZipcode] = useState('');
   const [data, setData] = useState(null);
+  var api_key = process.env.NEXT_PUBLIC_API_KEY;
 
   const fetchZipcodeData = async () => {
     const options = {
@@ -18,7 +19,7 @@ export default function Home() {
       url: 'https://vanitysoft-boundaries-io-v1.p.rapidapi.com/rest/v1/public/boundary/zipcode',
       params: { zipcode },
       headers: {
-        'X-RapidAPI-Key': "437102b9edmshc0916b70234996bp188f69jsn02967bcee422",
+        'X-RapidAPI-Key': api_key,
         'X-RapidAPI-Host': 'vanitysoft-boundaries-io-v1.p.rapidapi.com',
       },
     };
